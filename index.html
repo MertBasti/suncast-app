@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SunCast – Deine Wetter-App</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#2376c9">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="SunCast">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+</head>
+
+<body>
+  <main class="app">
+
+    <header>
+      <h1>SunCast</h1>
+
+<button id="themeButton" type="button" aria-label="Design wechseln">
+  ☀️ Heller Modus
+</button>
+
+      <p>Dein Wetter. Jederzeit.</p>
+    </header>
+
+    <section class="search">
+      <input
+        type="text"
+        id="cityInput"
+        placeholder="Stadt suchen..."
+      >
+      <button id="searchButton">Suchen</button>
+      <button id="locationButton">📍 Mein Standort</button>
+    </section>
+
+    
+<section class="current-weather">
+  <h2 id="cityName">Ingolstadt</h2>
+  <p id="weatherDescription">Wetter wird geladen...</p>
+
+  <div class="temperature">
+    <span id="temperature">--</span>°C
+  </div>
+
+  <p id="weatherDetails">
+    Aktuelle Wetterdaten
+  </p>
+
+  <div class="weather-recommendation">
+    <span id="recommendationIcon">💡</span>
+    <p id="recommendationText">
+      Wetterempfehlung wird geladen...
+    </p>
+  </div>
+</section>
+
+
+    <section class="forecast">
+      <h2>5-Tage-Vorhersage</h2>
+      <div id="forecastContainer"></div>
+    </section>
+
+    <section class="hourly">
+      <h2>Temperaturverlauf</h2>
+      <canvas id="temperatureChart"></canvas>
+    </section>
+
+    <section class="favorites">
+      <h2>Meine Lieblingsorte</h2>
+      <button id="addFavorite">
+        + Ort speichern
+      </button>
+      <div id="favoritesContainer"></div>
+    </section>
+
+    <footer>
+      <p>Wetterdaten von Open-Meteo</p>
+    </footer>
+
+  </main>
+
+  <script src="./chart.umd.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,431 @@
+
+/* SUNCAST – DESIGN */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont,
+               "Segoe UI", sans-serif;
+  color: #ffffff;
+
+  
+background:
+  linear-gradient(
+    rgba(4, 16, 36, 0.15),
+    rgba(4, 16, 36, 0.35)
+  ),
+  url("suncast-background.png") center 35% / cover no-repeat,
+  #06152d;
+
+  background-attachment: fixed;
+}
+
+/* Dezente atmosphärische Lichteffekte */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+
+  background:
+    radial-gradient(
+      ellipse at 50% 85%,
+      rgba(166, 212, 245, 0.15),
+      transparent 48%
+    );
+}
+
+/* Hauptbereich */
+.app {
+  width: 100%;
+  max-width: 900px;
+  margin: auto;
+  padding: 30px 20px 50px;
+}
+
+/* Kopfbereich */
+header {
+  text-align: center;
+  margin-bottom: 26px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+header p {
+  margin-top: 7px;
+  font-size: 14px;
+  color: #b9d4ec;
+}
+
+/* Kompakte Ortssuche */
+.search {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.search input {
+  flex: 1 1 180px;
+  min-width: 0;
+  padding: 14px 16px;
+  border-radius: 15px;
+  border: 1px solid rgba(255,255,255,0.18);
+  outline: none;
+  background: rgba(255,255,255,0.12);
+  color: white;
+  font-size: 15px;
+}
+
+.search input::placeholder {
+  color: #b8cde0;
+}
+
+button {
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 15px;
+  padding: 13px 17px;
+  color: white;
+  background: rgba(255,255,255,0.15);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:hover {
+  background: rgba(255,255,255,0.25);
+}
+
+#searchButton {
+  background: #e4f2ff;
+  color: #123a60;
+}
+
+#locationButton {
+  background: rgba(255,255,255,0.12);
+  color: white;
+}
+
+#locationButton:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+
+/* Wetterkarten */
+.current-weather,
+.forecast,
+.hourly,
+.favorites {
+  border: 1px solid rgba(255,255,255,0.16);
+  border-radius: 24px;
+  padding: 24px;
+  margin-bottom: 18px;
+
+  background: rgba(255,255,255,0.085);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+}
+
+/* Aktuelles Wetter */
+.current-weather {
+  text-align: center;
+  padding: 38px 20px;
+  background:
+    radial-gradient(
+      ellipse at 75% 5%,
+      rgba(255,191,91,0.16),
+      transparent 55%
+    ),
+    rgba(255,255,255,0.09);
+}
+
+.current-weather h2 {
+  font-size: 27px;
+  font-weight: 500;
+  margin: 0;
+}
+
+#weatherDescription {
+  font-size: 17px;
+  color: #d4e6f6;
+}
+
+.temperature {
+  font-size: clamp(76px, 13vw, 110px);
+  font-weight: 200;
+  letter-spacing: -5px;
+  margin: 12px 0;
+}
+
+#weatherDetails {
+  color: #c7dff2;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* Überschriften */
+.forecast h2,
+.hourly h2,
+.favorites h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 20px;
+}
+
+/* 5-Tage-Vorhersage */
+#forecastContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.forecast-day {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 13px 18px;
+  border-radius: 15px;
+  background: rgba(255,255,255,0.07);
+}
+
+.forecast-day p {
+  margin: 0;
+}
+
+.forecast-day p:first-child {
+  width: 55px;
+  font-weight: 600;
+}
+
+.forecast-day div {
+  font-size: 26px;
+}
+
+.forecast-day p:last-child {
+  min-width: 95px;
+  text-align: right;
+  color: #d7e9f8;
+}
+
+/* Temperaturdiagramm */
+#temperatureChart {
+  width: 100%;
+  max-height: 280px;
+}
+
+/* Lieblingsorte */
+#favoritesContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.favorite-city {
+  background: rgba(255,255,255,0.12);
+}
+
+/* Fußzeile */
+footer {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 12px;
+  color: #a9c9e2;
+}
+
+/* Smartphone */
+@media (max-width: 600px) {
+  .app {
+    padding: 18px 14px 35px;
+  }
+
+  header {
+    margin-bottom: 22px;
+  }
+
+  header h1 {
+    font-size: 27px;
+  }
+
+  .search {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 9px;
+  }
+
+  .search input {
+    width: 100%;
+    grid-column: 1;
+  }
+
+  #searchButton {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  #locationButton {
+    grid-column: 1 / -1;
+    padding: 10px;
+  }
+
+  .current-weather,
+  .forecast,
+  .hourly,
+  .favorites {
+    padding: 19px;
+    border-radius: 21px;
+  }
+
+  .current-weather {
+    padding: 34px 15px;
+  }
+
+  .temperature {
+    font-size: 85px;
+  }
+
+  .forecast-day {
+    padding: 13px 12px;
+    font-size: 14px;
+  }
+
+  .forecast-day p:last-child {
+    min-width: 78px;
+  }
+}
+
+/* Automatische Wetterempfehlung */
+.weather-recommendation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  margin-top: 24px;
+  padding: 14px 18px;
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 16px;
+  background: rgba(6, 21, 45, 0.45);
+}
+
+#recommendationIcon {
+  font-size: 26px;
+  flex-shrink: 0;
+}
+
+#recommendationText {
+  margin: 0;
+  color: #e4f2ff;
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: left;
+}
+
+/* SUNCAST – HELLER MODUS */
+
+body.light-mode {
+  color: #173653;
+  background:
+    linear-gradient(
+      rgba(232, 245, 255, 0.82),
+      rgba(205, 230, 250, 0.88)
+    ),
+    url("suncast-background.png") center 35% / cover no-repeat,
+    #e6f3ff;
+  background-attachment: fixed;
+}
+
+body.light-mode header p {
+  color: #456a89;
+}
+
+body.light-mode .current-weather,
+body.light-mode .forecast,
+body.light-mode .hourly,
+body.light-mode .favorites {
+  background: rgba(255, 255, 255, 0.72);
+  border-color: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 12px 35px rgba(30, 70, 110, 0.10);
+}
+
+body.light-mode .current-weather {
+  background: rgba(255, 255, 255, 0.76);
+}
+
+body.light-mode #weatherDescription,
+body.light-mode #weatherDetails {
+  color: #416582;
+}
+
+body.light-mode .search input {
+  background: rgba(255, 255, 255, 0.88);
+  color: #173653;
+  border-color: #b6d0e4;
+}
+
+body.light-mode .search input::placeholder {
+  color: #66849e;
+}
+
+body.light-mode button {
+  background: #d7eafb;
+  color: #173653;
+  border-color: #b6d0e4;
+}
+
+body.light-mode #searchButton {
+  background: #174d7b;
+  color: white;
+}
+
+body.light-mode #locationButton {
+  background: rgba(255, 255, 255, 0.80);
+  color: #173653;
+}
+
+body.light-mode .forecast-day {
+  background: rgba(213, 233, 248, 0.65);
+}
+
+body.light-mode .forecast-day p:last-child {
+  color: #416582;
+}
+
+body.light-mode .weather-recommendation {
+  background: rgba(210, 232, 248, 0.75);
+  border-color: #c4dced;
+}
+
+body.light-mode #recommendationText {
+  color: #173653;
+}
+
+body.light-mode footer {
+  color: #456a89;
+}
+
+body.light-mode .favorite-city {
+  background: rgba(213, 233, 248, 0.85);
+}
+
+/* Design-Wechsel-Button */
+#themeButton {
+  margin-top: 10px;
+  padding: 9px 16px;
+  border-radius: 25px;
+  font-size: 13px;
+}
